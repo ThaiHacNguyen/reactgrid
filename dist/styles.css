@@ -139,6 +139,45 @@
       color: black;
       background-color: #e2ebfe; }
 
+.reactgrid-content .rg-pane .rg-cell.rg-select-cell .select-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  .reactgrid-content .rg-pane .rg-cell.rg-select-cell .select-box__current {
+    padding: 0 8px;
+    max-width: calc(100% - 8px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
+    .reactgrid-content .rg-pane .rg-cell.rg-select-cell .select-box__current span {
+      margin-left: 2px;
+      margin-right: 2px; }
+  .reactgrid-content .rg-pane .rg-cell.rg-select-cell .select-box__icon {
+    display: flex; }
+    .reactgrid-content .rg-pane .rg-cell.rg-select-cell .select-box__icon span {
+      align-self: stretch;
+      background-color: #cccccc;
+      margin-bottom: 4px;
+      margin-top: 4px;
+      width: 1px;
+      box-sizing: border-box; }
+    .reactgrid-content .rg-pane .rg-cell.rg-select-cell .select-box__icon svg {
+      margin: 0 4px;
+      display: inline-block;
+      fill: #cccccc;
+      line-height: 1;
+      stroke: #cccccc;
+      stroke-width: 0; }
+
+.reactgrid-content .rg-pane .rg-cell.rg-button-cell {
+  padding: 0; }
+  .reactgrid-content .rg-pane .rg-cell.rg-button-cell .button-box {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent; }
+
 [contenteditable] {
   -webkit-user-select: text;
   user-select: text; }

@@ -9,3 +9,6 @@ export * from './TimeCellTemplate';
 export * from './DropdownCellTemplate';
 export * from './keyCodeCheckings';
 export * from './getCharFromKeyCode'; 
+
+export * from './SelectCellTemplate';
+export * from './ButtonCellTemplate';

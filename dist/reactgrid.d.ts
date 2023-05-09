@@ -1,5 +1,6 @@
 /// <reference types="react" />
 import * as React$1 from 'react';
+import React__default from 'react';
 
 interface CheckboxCell extends Cell {
     type: 'checkbox';
@@ -213,6 +214,46 @@ declare const isAllowedOnNumberTypingKey: (keyCode: number) => boolean;
 declare const isNavigationKey: (keyCode: number) => boolean;
 
 declare const getCharFromKeyCode: (keyCode: number, isShiftKey?: boolean) => string;
+
+interface IOption {
+    value: string;
+    label: string;
+}
+interface SelectCell extends Cell, Span {
+    type: "select";
+    options: IOption[];
+    text: string;
+    isDisabled?: boolean;
+    placeholder?: string;
+    renderer?: (text: string) => React__default.ReactNode;
+}
+declare class SelectCellTemplate implements CellTemplate<SelectCell> {
+    getCompatibleCell(uncertainCell: Uncertain<SelectCell>): Compatible<SelectCell>;
+    update(cell: Compatible<SelectCell>, cellToMerge: UncertainCompatible<SelectCell>): Compatible<SelectCell>;
+    getClassName(cell: Compatible<SelectCell>, isInEditMode: boolean): string;
+    handleKeyDown(cell: Compatible<SelectCell>, keyCode: number, ctrl: boolean, shift: boolean, alt: boolean): {
+        cell: Compatible<SelectCell>;
+        enableEditMode: boolean;
+    };
+    render(cell: Compatible<SelectCell>, isInEditMode: boolean, onCellChanged: (cell: Compatible<SelectCell>, commit: boolean) => void): React__default.ReactNode;
+}
+
+interface ButtonCell extends Cell {
+    type: "button";
+    text: string;
+    isDisabled?: boolean;
+    renderer?: (text: string) => React$1.ReactNode;
+    callback?: (e: any) => void;
+}
+declare class ButtonCellTemplate implements CellTemplate<ButtonCell> {
+    getCompatibleCell(uncertainCell: Uncertain<ButtonCell>): Compatible<ButtonCell>;
+    getClassName(cell: Compatible<ButtonCell>): string;
+    handleKeyDown(cell: Compatible<ButtonCell>, keyCode: number, ctrl: boolean, shift: boolean, alt: boolean): {
+        cell: Compatible<ButtonCell>;
+        enableEditMode: boolean;
+    };
+    render(cell: Compatible<ButtonCell>, isInEditMode: boolean, onCellChanged: (cell: Compatible<ButtonCell>, commit: boolean) => void): React$1.ReactNode;
+}
 
 /**
  * This is the public API for ReactGrid
@@ -1000,4 +1041,4 @@ declare enum keyCodes {
  */
 declare const getCellProperty: <TCell extends Cell, TKey extends keyof TCell>(uncertainCell: Uncertain<TCell>, propName: TKey, expectedType: 'string' | 'number' | 'boolean' | 'undefined' | 'function' | 'object' | 'symbol' | 'bigint') => NonNullable<Uncertain<TCell>[TKey]>;
 
-export { BorderProps, Cell, CellChange, CellLocation, CellStyle, CellTemplate, CellTemplates, CheckboxCell, CheckboxCellTemplate, ChevronCell, ChevronCellTemplate, Column, Compatible, DateCell, DateCellTemplate, DefaultCellTypes, DropPosition, DropdownCell, DropdownCellTemplate, EmailCell, EmailCellTemplate, HeaderCell, HeaderCellTemplate, Highlight, Id, MenuOption, NumberCell, NumberCellTemplate, OptionType, ReactGrid, ReactGridProps, Row, SelectionMode, Span, TextCell, TextCellTemplate, TextLabels, TimeCell, TimeCellTemplate, Uncertain, UncertainCompatible, getCellProperty, getCharFromKeyCode, inNumericKey, isAllowedOnNumberTypingKey, isAlphaNumericKey, isNavigationKey, isNumpadNumericKey, keyCodes };
+export { BorderProps, ButtonCell, ButtonCellTemplate, Cell, CellChange, CellLocation, CellStyle, CellTemplate, CellTemplates, CheckboxCell, CheckboxCellTemplate, ChevronCell, ChevronCellTemplate, Column, Compatible, DateCell, DateCellTemplate, DefaultCellTypes, DropPosition, DropdownCell, DropdownCellTemplate, EmailCell, EmailCellTemplate, HeaderCell, HeaderCellTemplate, Highlight, Id, MenuOption, NumberCell, NumberCellTemplate, OptionType, ReactGrid, ReactGridProps, Row, SelectCell, SelectCellTemplate, SelectionMode, Span, TextCell, TextCellTemplate, TextLabels, TimeCell, TimeCellTemplate, Uncertain, UncertainCompatible, getCellProperty, getCharFromKeyCode, inNumericKey, isAllowedOnNumberTypingKey, isAlphaNumericKey, isNavigationKey, isNumpadNumericKey, keyCodes };
