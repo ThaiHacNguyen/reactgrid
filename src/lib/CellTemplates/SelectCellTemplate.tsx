@@ -73,14 +73,19 @@ export class SelectCellTemplate implements CellTemplate<SelectCell> {
     shift: boolean,
     alt: boolean
   ): { cell: Compatible<SelectCell>; enableEditMode: boolean } {
-    if (!ctrl && !alt && isAlphaNumericKey(keyCode)) {
+    if (
+      !ctrl &&
+      !alt &&
+      isAlphaNumericKey(keyCode) &&
+      !(shift && keyCode === keyCodes.SPACE)
+    ) {
       return {
-        cell: this.getCompatibleCell({ ...cell }),
+        cell,
         enableEditMode: true,
       };
     }
     return {
-      cell: this.getCompatibleCell({ ...cell }),
+      cell,
       enableEditMode:
         keyCode === keyCodes.POINTER || keyCode === keyCodes.ENTER,
     };

@@ -6,6 +6,7 @@
     background: $template-bg-color;
     font-size: $template-font-size;
     outline: none;
+    border: none;
 }
 
 .rg-celleditor {
@@ -28,6 +29,18 @@
 }
 
 .reactgrid-content .rg-pane .rg-cell {
+    .show {
+        .fade {
+            opacity: 0;
+            transition: all .3s;
+        }
+        &:hover {
+            .fade {
+                opacity: 1;
+            }
+        }
+    }
+
     &.rg-number-cell,
     .rg-time-cell,
     .rg-date-cell {

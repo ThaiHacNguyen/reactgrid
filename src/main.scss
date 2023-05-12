@@ -209,3 +209,27 @@
         left: 50%;
     }
 }
+
+.reactgrid {
+    &.disabled {
+        .reactgrid-content {
+            background-color: #F2F2F2;
+            .rg-pane {
+                &.rg-pane-left,
+                &.rg-pane-right {
+                    .rg-cell {
+                        background-color: #F2F2F2;
+                    }
+                }
+            }
+        }
+    }
+    .reactgrid-content {
+        .rg-pane {
+            .rg-cell.rg-header-cell {
+                font-weight: 600;
+            }
+        }
+    }
+}
+
