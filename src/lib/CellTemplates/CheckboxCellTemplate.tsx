@@ -10,6 +10,7 @@ export interface CheckboxCell extends Cell {
     checked: boolean;
     checkedText?: string;
     uncheckedText?: string;
+    isDisabled?: boolean;
 }
 
 export class CheckboxCellTemplate implements CellTemplate<CheckboxCell> {
@@ -19,7 +20,15 @@ export class CheckboxCellTemplate implements CellTemplate<CheckboxCell> {
         const text = checked ?
             uncertainCell.checkedText ? uncertainCell.checkedText : '1' :
             uncertainCell.uncheckedText ? uncertainCell.uncheckedText : '';
-        return { ...uncertainCell, checked: !!checked, value: checked ? 1 : NaN, text };
+
+        let isDisabled: boolean;
+        try {
+        isDisabled = getCellProperty(uncertainCell, "isDisabled", "boolean");
+        } catch {
+        isDisabled = false;
+        }
+
+        return { ...uncertainCell, checked: !!checked, value: checked ? 1 : NaN, text, isDisabled };
     }
 
     handleKeyDown(cell: Compatible<CheckboxCell>, keyCode: number, ctrl: boolean, shift: boolean, alt: boolean): { cell: Compatible<CheckboxCell>; enableEditMode: boolean } {
@@ -46,6 +55,7 @@ export class CheckboxCellTemplate implements CellTemplate<CheckboxCell> {
             <label>
                 <input
                     type='checkbox'
+                    disabled={cell.isDisabled}
                     checked={cell.checked}
                     onChange={e => onCellChanged(this.toggleCheckboxCell(cell), true)}
                 />
